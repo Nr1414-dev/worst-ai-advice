@@ -27,6 +27,8 @@ def check_line(text):
     """Refuse to write a line the gate would reject."""
     if not text.strip():
         raise SystemExit("entry must not be only whitespace")
+    if "\n" in text or "\r" in text:
+        raise SystemExit("entry must be exactly one line, no line breaks")
     if len(text) > MAX_CHARS:
         raise SystemExit(f"entry must be at most {MAX_CHARS} characters, got {len(text)}")
 
